@@ -1,0 +1,28 @@
+name: GMUD Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      gmud_number:
+        description: 'Número da GMUD'
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Exibir informações da GMUD
+        run: |
+          echo "🚀 Deploy iniciado!"
+          echo "📋 GMUD: ${{ github.event.inputs.gmud_number }}"
+          echo "⏰ Data: $(date)"
+          echo "👤 Disparado por: ${{ github.actor }}"
+      
+      - name: Simular deploy
+        run: |
+          echo "Iniciando deploy..."
+          sleep 5
+          echo "✅ Deploy concluído com sucesso!"
